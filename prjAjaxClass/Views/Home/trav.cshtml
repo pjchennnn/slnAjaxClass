@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewData["Title"] = "trav";
+}
+
+@section Styles
+{
+    #cards {
+        display:flex;
+        flex-direction:row;
+        flex-wrap:nowrap;
+        justify-content:flex-start;
+        align-items:stretch;
+        align-content:stretch;
+    }
+}
+
+
+<h1>homework1_trav</h1>
+<div id="cards" style="display:flex;
+        flex-direction:row;
+        flex-wrap:wrap;
+        justify-content:flex-start;
+        align-items:stretch;
+        align-content:stretch;
+        margin:10px;"></div>
+
+
+
+@section Scripts
+{
+    <script src="~/js/travel.js"></script>
+    <script>
+        const cards = document.getElementById("cards")
+        // const cardsHtml = spots.CommonFormat.Section.map(e =>`
+        //             <div class="card" style="width: 18rem;">
+        //     <img src="${e.file.img[0].text}" class="card-img-top" alt="...">
+        //     <div class="card-body">
+        //                 <h5 class="card-title">${e.stitle}</h5>
+        //                 <p class="card-text">${e.xbody}</p>
+        //     </div>
+        //     <ul class="list-group list-group-flush">
+        //                 <li class="list-group-item">${e.address}</li>
+        //                 <li class="list-group-item">${e.xpostDate}</li>
+        //                 <li class="list-group-item">${e.MEMO_TIME}</li>
+        //     </ul>
+        // </div>
+        // `).join('')
+        let cardshtml = ``
+        for (var e of spots.CommonFormat.Section) {
+            let Img = Array.isArray(e.file.img)? e.file.img[0].text :e.file.img.text
+            cardshtml += `
+                        <div class="card" style="width: 18rem;">
+                                    <img src="${Img}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                                <h5 class="card-title">${e.stitle}</h5>
+                                <p class="card-text">${e.xbody}</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                                <li class="list-group-item">${e.address}</li>
+                                <li class="list-group-item">${e.xpostDate}</li>
+                                <li class="list-group-item">${e.MEMO_TIME}</li>
+                    </ul>
+                </div>
+            `
+        }
+        cards.innerHTML = cardshtml
+    </script>
+}

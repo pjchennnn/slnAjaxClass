@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewData["Title"] = "jsontest";
+}
+
+<h1>empJsonPractice</h1>
+<ul id="ul">
+
+</ul>
+
+@section Scripts
+{
+    <script>
+        const emp = {
+            "employees": [
+                { "name": "Tom", "workYears": 3, "salary": 35000 },
+                { "name": "Jack", "workYears": 5, "salary": 40000 },
+                { "name": "Mary", "workYears": 7, "salary": 45000 }
+            ]
+        };
+        const ul = document.getElementById("ul")
+        // let ulhtml = ``;
+        // for (var e of emp.employees) {
+        //     ulhtml += `<li>${e.name} ${e.workYears} ${e.salary}</li>`
+        // }
+        // ul.innerHTML = ulhtml;
+        const ulhtml = emp.employees.map(e => `<li>${e.name}, ${e.workYears}, ${e.salary}</li>`).join('')
+        ul.innerHTML = ulhtml
+    </script>
+}
